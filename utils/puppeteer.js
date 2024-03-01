@@ -5,25 +5,16 @@ puppeteer.use(StealthPlugin())
 puppeteer.use(UserAgentPlugin({makeWindows: true}))
 
 module.exports.initiateBrowser = async function (browserDir, showWeb = false) {
-    let executablePath = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-    if (process.platform === "linux") {
-        executablePath = "/usr/bin/google-chrome"
-    }
-    if (process.platform === "win32") {
-        executablePath = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
-    }
     return await puppeteer.launch({
         headless: !showWeb,
         defaultViewport: null,
         userDataDir: browserDir,
-        executablePath: executablePath,
+        // executablePath: executablePath,
         ignoreDefaultArgs: ["--disable-extensions"],
         args: [
-            '--incognito',
             '--no-sandbox',
             '--disable-gpu',
             '--start-fullscreen',
-            '--disable-notifications',
             '--disable-web-security',
             '--ignore-certificate-errors',
             '--disable-features=IsolateOrigins,site-per-process'

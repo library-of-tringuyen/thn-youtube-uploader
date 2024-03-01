@@ -1,11 +1,45 @@
 const fs = require("fs");
 const delay = require("delay");
 const fsExtra = require("fs-extra");
+const readlineSync = require("readline-sync");
 const {initiateBrowser, initiatePage} = require("./utils/puppeteer");
 
-const rootPath = process.cwd() + "/public/youtube-upload-sdk";
+module.exports.login = async function (rootPath, email, password) {
+    const rootDIR = rootPath + "/browser";
+    await fsExtra.removeSync(rootDIR);
 
-module.exports.uploadVideo = async function (channel, cookiesPath, videoPath, imagePath,
+    const browser = await initiateBrowser(rootPath, true);
+    const mainPage = await initiatePage(browser);
+
+    await mainPage.goto(`https://studio.youtube.com/`);
+
+    await mainPage.type('input[type="email"]', email);
+    await mainPage.keyboard.press("Enter");
+    await delay(5000);
+
+    await mainPage.type('input[type="password"]', password);
+    await mainPage.keyboard.press("Enter");
+    await delay(5000);
+
+    let confirmed = await readlineSync.question(
+        "Please input `" + email + "` to confirm login success: "
+    );
+    while (confirmed !== email) {
+        confirmed = await readlineSync.question(
+            "Please input `" + email + "` to confirm login success: "
+        );
+    }
+    const cookies = await mainPage.cookies();
+    await fs.writeFileSync(
+        "./cookies-" + email + ".json",
+        JSON.stringify(cookies, null, 2)
+    );
+    await browser.close();
+    await fsExtra.removeSync(__dirname + "/browser");
+    return cookies;
+}
+
+module.exports.uploadVideo = async function (rootPath, channel, cookiesPath, videoPath, imagePath,
                                              {
                                                  title = "Example Title",
                                                  description = "Example Description",
