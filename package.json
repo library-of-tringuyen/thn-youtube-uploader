@@ -1,0 +1,40 @@
+{
+  "name": "thn-youtube-uploader",
+  "author": "Tri H.Nguyen <tringuyencse@gmail.com>",
+  "version": "1.0.0",
+  "description": "A robust SDK for YouTube video uploads. Integrate video uploading functionality into your applications seamlessly, allowing users to upload their videos to YouTube effortlessly.",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/library-of-tringuyen/thn-youtube-uploader.git"
+  },
+  "keywords": [
+    "YouTube",
+    "Upload",
+    "SDK",
+    "Video",
+    "Integration",
+    "Library",
+    "API",
+    "Developer"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/library-of-tringuyen/thn-youtube-uploader/issues"
+  },
+  "homepage": "https://github.com/library-of-tringuyen/thn-youtube-uploader/blob/main/LICENSE",
+  "dependencies": {
+    "delay": "^5.0.0",
+    "fs": "^0.0.1-security",
+    "fs-extra": "^11.1.1",
+    "puppeteer": "^20.8.0",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-anonymize-ua": "^2.4.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
+    "readline-sync": "^1.4.10"
+  },
+  "main": "index.js",
+  "devDependencies": {}
+}
