@@ -59,7 +59,7 @@ module.exports.uploadVideo = async function (rootPath, channel, cookiesPath, vid
     const rootDIR = rootPath + "/browser";
     await fsExtra.removeSync(rootDIR);
 
-    const browser = await initiateBrowser(rootPath, true);
+    const browser = await initiateBrowser(rootPath, false);
     const mainPage = await initiatePage(browser);
     const cookiesString = await fs.readFileSync(cookiesPath);
     const cookies = JSON.parse(cookiesString);
