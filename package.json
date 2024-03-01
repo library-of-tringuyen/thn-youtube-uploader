@@ -4,7 +4,9 @@
   "version": "2.0.0",
   "description": "A robust SDK for YouTube video uploads. Integrate video uploading functionality into your applications seamlessly, allowing users to upload their videos to YouTube effortlessly.",
   "scripts": {
-    "build": "tsc"
+    "publish:patch": "npm version patch && npm publish",
+    "publish:minor": "npm version minor && npm publish",
+    "publish:major": "npm version major && npm publish"
   },
   "repository": {
     "type": "git",
