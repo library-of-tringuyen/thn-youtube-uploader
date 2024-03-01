@@ -1,7 +1,7 @@
 {
   "name": "thn-youtube-uploader",
   "author": "Tri H.Nguyen <tringuyencse@gmail.com>",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "A robust SDK for YouTube video uploads. Integrate video uploading functionality into your applications seamlessly, allowing users to upload their videos to YouTube effortlessly.",
   "scripts": {
     "publish:patch": "npm version patch && npm publish && git push origin main",
