@@ -10,7 +10,14 @@ module.exports.initiateBrowser = async function (browserDir, showWeb = false) {
         defaultViewport: null,
         userDataDir: browserDir,
         ignoreDefaultArgs: ["--disable-extensions"],
-        args: []
+        args: [
+            '--no-sandbox',
+            '--disable-gpu',
+            '--start-fullscreen',
+            '--disable-web-security',
+            '--ignore-certificate-errors',
+            '--disable-features=IsolateOrigins,site-per-process'
+        ]
     });
 }
 
